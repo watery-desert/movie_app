@@ -6,7 +6,8 @@ import '../../../constant/constant.dart';
 
 class MooviDetails extends StatelessWidget {
   final Movie moovi;
-  MooviDetails(this.moovi);
+  final VoidCallback onTap;
+  MooviDetails(this.moovi, this.onTap,);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,19 +27,23 @@ class MooviDetails extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.fromLTRB(32.0, 32.0, 32.0, 8.0),
-            width: double.infinity,
-            height: 340,
-            decoration:
-                BoxDecoration(borderRadius: BorderRadius.circular(16.0)),
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(
-                Radius.circular(16),
+          GestureDetector(
+            onTap: onTap,
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(32.0, 32.0, 32.0, 8.0),
+              width: double.infinity,
+              height: 340,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16.0),
               ),
-              child: Image.asset(
-                moovi.location,
-                fit: BoxFit.cover,
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(16),
+                ),
+                child: Image.asset(
+                  moovi.location,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

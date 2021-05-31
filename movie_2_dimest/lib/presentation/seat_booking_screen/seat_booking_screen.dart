@@ -6,7 +6,7 @@ import '../widget/app_bar/transparent_appbar.dart';
 import '../../models/movie.dart';
 import 'build_seats.dart';
 import 'build_time_picker.dart';
-import '../widget/button/moovi_button.dart';
+import '../widget/button/movie_button.dart';
 import '../check_out_screen/check_out_screen.dart';
 
 TextStyle defaultTextStyle = TextStyle(color: Colors.white);
@@ -86,7 +86,7 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                 SizedBox(
                   height: 32,
                 ),
-                MooviButton(
+                MovieButton(
                   padding: EdgeInsets.zero,
                   title: 'PAY',
                   onPressed: () {

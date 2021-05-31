@@ -8,6 +8,7 @@ class MoviesCard extends StatelessWidget {
   final bool showCards;
   final PageController pageController;
   final OnPageChangeCallback onPageChangeCallback;
+  final VoidCallback onTapCard;
 
   final List<Movie> moovisList;
 
@@ -16,23 +17,20 @@ class MoviesCard extends StatelessWidget {
     required this.pageController,
     required this.moovisList,
     required this.onPageChangeCallback,
+    required this.onTapCard,
   });
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
-    // final moovisList = widget.moovisList.reversed.toList();
-    // final pageController = widget.pageController;
-    // final onPageChangeCallback = widget.onPageChangeCallback;
-    // final showCards = widget.showCards;
+
     return showCards
         ? StaggerPages(
             onPageChangeCallback: onPageChangeCallback,
             pageController: pageController,
-            child: (index, _) => MooviDetails(moovisList[index]),
+            child: (index, _) => MooviDetails(
+                  moovisList[index],
+                  onTapCard,
+                ),
             pageCount: moovisList.length)
         : SizedBox();
   }

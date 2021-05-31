@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class MooviButton extends StatelessWidget {
+class MovieButton extends StatelessWidget {
   final String title;
   final VoidCallback? onPressed;
   final Color color;
   final EdgeInsets padding;
 
-  MooviButton({
+  MovieButton({
     required this.title,
-    required this.onPressed,
+     this.onPressed,
     required this.color,
     this.padding = const EdgeInsets.symmetric(horizontal: 16.0),
   });

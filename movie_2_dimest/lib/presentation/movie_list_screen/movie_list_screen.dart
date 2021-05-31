@@ -11,7 +11,7 @@ import 'background_image_slide.dart';
 import 'movie_info_view/top_image_view.dart';
 import 'movie_info_view/more_info_card.dart';
 import '../widget/app_bar/transparent_appbar.dart';
-import '../widget/button/moovi_button.dart';
+import '../widget/button/movie_button.dart';
 import '../seat_booking_screen/seat_booking_screen.dart';
 
 class MovieListScreen extends StatelessWidget {
@@ -107,6 +107,11 @@ class _MyHomePageState extends State<MyHomePage>
               showCards: compactView,
               pageController: _pageController,
               moovisList: reversedMovieList,
+              onTapCard: () {
+                setState(() {
+                  compactView = false;
+                });
+              },
               onPageChangeCallback: (index) {
                 setState(() {
                   currentIndex = index;
@@ -114,8 +119,6 @@ class _MyHomePageState extends State<MyHomePage>
               },
             ),
             TransparentAppBar(),
-           
-
             Positioned(
               bottom: 32.0,
               left: 0.0,
@@ -127,21 +130,15 @@ class _MyHomePageState extends State<MyHomePage>
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 closedElevation: 0.0,
-                tappable: !compactView,
+                tappable: true,
                 closedBuilder: (context, action) {
-                  return MooviButton(
-                      title: 'BUY TICKET',
-                      color: Colors.black87,
-                      padding: compactView
-                          ? const EdgeInsets.symmetric(horizontal: 62.0)
-                          : EdgeInsets.symmetric(horizontal: 16),
-                      onPressed: !compactView
-                          ? null
-                          : () {
-                              setState(() {
-                                compactView = false;
-                              });
-                            });
+                  return MovieButton(
+                    title: 'BUY TICKET',
+                    color: Colors.black87,
+                    padding: compactView
+                        ? const EdgeInsets.symmetric(horizontal: 62.0)
+                        : EdgeInsets.symmetric(horizontal: 16),
+                  );
                 },
                 openShape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(32.0),

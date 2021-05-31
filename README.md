@@ -2,7 +2,7 @@
 
 Movie 2.0 by Dimest
 
-<img src="assets/movie_2_dimest.gif" height="250"/>
+<img src="assets/movie_2_dimest.gif"  width="300"/>
 
 
 my email: waterydesert.developer@gmail.com

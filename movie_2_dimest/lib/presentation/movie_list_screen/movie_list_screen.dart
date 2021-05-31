@@ -61,7 +61,7 @@ class _MovieListScreenState extends State<MovieListScreen>
                 children: <Widget>[
                   if (compactView)
                     Stack(
-                      children: movies.map((movie) {
+                      children: reversedMovieList.map((movie) {
                         return BackgroundImageSlide(
                           pageController: _pageController,
                           deviceWidth: deviceWidth,
@@ -83,20 +83,20 @@ class _MovieListScreenState extends State<MovieListScreen>
                     showCompactImageView: !compactView,
                     leftImageURL: currentIndex == 0
                         ? null
-                        : reversedMovieList[currentIndex - 1].location,
-                    middleImageURL: reversedMovieList[currentIndex].location,
-                    rightImageURL: currentIndex + 1 == reversedMovieList.length
+                        : movies[currentIndex - 1].location,
+                    middleImageURL: movies[currentIndex].location,
+                    rightImageURL: currentIndex + 1 == movies.length
                         ? null
-                        : reversedMovieList[currentIndex + 1].location,
+                        : movies[currentIndex + 1].location,
                   ),
                   MoreInfoCard(
                     showMoreInfo: !compactView,
-                    movie: movies.reversed.toList()[currentIndex],
+                    movie: movies[currentIndex],
                   ),
                   MoviesCard(
                     showCards: compactView,
                     pageController: _pageController,
-                    movieList: reversedMovieList,
+                    movieList: movies,
                     onTapCard: () {
                       setState(() {
                         compactView = false;
@@ -136,7 +136,7 @@ class _MovieListScreenState extends State<MovieListScreen>
                       openColor: Colors.transparent,
                       openElevation: 0.0,
                       openBuilder: (context, action) => SeatBookingScreen(
-                        reversedMovieList[currentIndex],
+                        movies[currentIndex],
                       ),
                     ),
                   ),

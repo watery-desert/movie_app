@@ -25,8 +25,8 @@ Widget buildActorTile(Actor actor) {
 }
 
 class BuildBottom extends StatelessWidget {
-  final Movie moovi;
-  BuildBottom(this.moovi);
+  final Movie movie;
+  BuildBottom(this.movie);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,7 +47,7 @@ class BuildBottom extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: moovi.actors
+                children: movie.actors
                     .map(
                       (actor) => buildActorTile(actor),
                     )
@@ -65,7 +65,7 @@ class BuildBottom extends StatelessWidget {
               ),
             ),
             Text(
-              moovi.introduction,
+              movie.introduction,
               style: TextStyle(
                 color: Colors.black.withOpacity(0.5),
               ),

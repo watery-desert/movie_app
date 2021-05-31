@@ -10,12 +10,12 @@ class MoviesCard extends StatelessWidget {
   final OnPageChangeCallback onPageChangeCallback;
   final VoidCallback onTapCard;
 
-  final List<Movie> moovisList;
+  final List<Movie> movieList;
 
   MoviesCard({
     required this.showCards,
     required this.pageController,
-    required this.moovisList,
+    required this.movieList,
     required this.onPageChangeCallback,
     required this.onTapCard,
   });
@@ -27,11 +27,11 @@ class MoviesCard extends StatelessWidget {
         ? StaggerPages(
             onPageChangeCallback: onPageChangeCallback,
             pageController: pageController,
-            child: (index, _) => MooviDetails(
-                  moovisList[index],
+            child: (index, _) => MovieDetails(
+                  movieList[index],
                   onTapCard,
                 ),
-            pageCount: moovisList.length)
+            pageCount: movieList.length)
         : SizedBox();
   }
 }

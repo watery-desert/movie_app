@@ -4,10 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../models/movie.dart';
 import '../../../constant/constant.dart';
 
-class MooviDetails extends StatelessWidget {
-  final Movie moovi;
+class MovieDetails extends StatelessWidget {
+  final Movie movie;
   final VoidCallback onTap;
-  MooviDetails(this.moovi, this.onTap,);
+  MovieDetails(this.movie, this.onTap,);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,14 +41,14 @@ class MooviDetails extends StatelessWidget {
                   Radius.circular(16),
                 ),
                 child: Image.asset(
-                  moovi.location,
+                  movie.location,
                   fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
           Text(
-            moovi.title,
+            movie.title,
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class MooviDetails extends StatelessWidget {
           Wrap(
             alignment: WrapAlignment.center,
             spacing: 8.0,
-            children: moovi.tags
+            children: movie.tags
                 .map(
                   (tag) => Chip(
                     labelPadding: EdgeInsets.symmetric(horizontal: 4.0),
@@ -86,7 +86,7 @@ class MooviDetails extends StatelessWidget {
           RatingBar.builder(
             ignoreGestures: true,
             itemSize: 18,
-            initialRating: moovi.ratings,
+            initialRating: movie.ratings,
             minRating: 1,
             direction: Axis.horizontal,
             allowHalfRating: true,

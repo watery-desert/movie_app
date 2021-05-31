@@ -30,20 +30,12 @@ class _MovieListScreenState extends State<MovieListScreen>
     with SingleTickerProviderStateMixin {
   late PageController _pageController;
   bool compactView = true;
-  List<Movie> moovisList = [];
+
   int currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
-
-    moovisList = rawData.reversed
-        .map(
-          (data) => Movie.fromMap(
-            data,
-          ),
-        )
-        .toList();
 
     _pageController = PageController(initialPage: 0, viewportFraction: 0.8);
   }
@@ -51,7 +43,6 @@ class _MovieListScreenState extends State<MovieListScreen>
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
-    final reversedMovieList = moovisList.reversed.toList();
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
@@ -63,16 +54,19 @@ class _MovieListScreenState extends State<MovieListScreen>
             if (state is MovieLoading) {
               return LoadingScreen();
             } else if (state is MovieLoaded) {
+              final movies = state.movies;
+              final reversedMovieList = movies.reversed.toList();
+
               return Stack(
                 children: <Widget>[
                   if (compactView)
                     Stack(
-                      children: moovisList.map((moovi) {
+                      children: movies.map((movie) {
                         return BackgroundImageSlide(
                           pageController: _pageController,
                           deviceWidth: deviceWidth,
-                          imageURL: moovi.location,
-                          backgroundIndex: moovi.index,
+                          imageURL: movie.location,
+                          backgroundIndex: movie.index,
                         );
                       }).toList(),
                     ),
@@ -97,12 +91,12 @@ class _MovieListScreenState extends State<MovieListScreen>
                   ),
                   MoreInfoCard(
                     showMoreInfo: !compactView,
-                    moovi: moovisList.reversed.toList()[currentIndex],
+                    movie: movies.reversed.toList()[currentIndex],
                   ),
                   MoviesCard(
                     showCards: compactView,
                     pageController: _pageController,
-                    moovisList: reversedMovieList,
+                    movieList: reversedMovieList,
                     onTapCard: () {
                       setState(() {
                         compactView = false;

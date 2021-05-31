@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TopImageView extends StatelessWidget {
   final String? leftImageURL;
   final String middleImageURL;
-  final String rightImageURL;
+  final String? rightImageURL;
 
   final bool showCompactImageView;
 
@@ -33,7 +33,7 @@ class TopImageView extends StatelessWidget {
 class BuildBody extends StatefulWidget {
   final String? leftImageURL;
   final String middleImageURL;
-  final String rightImageURL;
+  final String? rightImageURL;
   final double deviceWidth;
 
   BuildBody({

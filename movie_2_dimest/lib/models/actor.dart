@@ -1,4 +1,6 @@
-class Actor {
+import 'package:equatable/equatable.dart';
+
+class Actor extends Equatable {
   final String name;
   final String avatarURL;
 
@@ -9,4 +11,10 @@ class Actor {
       avatarURL: data['avatarURL'],
     );
   }
+
+  @override
+  List<Object> get props => [
+        name,
+        avatarURL,
+      ];
 }

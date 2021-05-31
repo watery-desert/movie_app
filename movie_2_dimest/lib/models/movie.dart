@@ -1,6 +1,8 @@
+import 'package:equatable/equatable.dart';
+
 import 'actor.dart';
 
-class Movie {
+class Movie extends Equatable {
   final String title;
   final String location;
   final int index;
@@ -43,4 +45,17 @@ class Movie {
       trailerURL: data['trailer'],
     );
   }
+
+  @override
+  List<Object> get props => [
+        title,
+        location,
+        index,
+        tags,
+        ratings,
+        director,
+        actors,
+        introduction,
+        trailerURL,
+      ];
 }

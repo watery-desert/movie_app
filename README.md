@@ -3,6 +3,3 @@
 Movie 2.0 by Dimest
 
 <img src="assets/movie_2_dimest.gif"  width="300"/>
-
-
-telegram: https://t.me/waterydesert

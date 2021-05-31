@@ -6,8 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'movies_card/movies_card.dart';
-import '../../data_layer/json_data.dart';
-import '../../models/movie.dart';
 import 'background_image_slide.dart';
 import 'movie_info_view/top_image_view.dart';
 import 'movie_info_view/more_info_card.dart';

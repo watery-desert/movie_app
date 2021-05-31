@@ -6,10 +6,10 @@ import 'build_bottom.dart';
 
 class MoreInfoCard extends StatelessWidget {
   final bool showMoreInfo;
-  final Movie moovi;
+  final Movie movie;
   MoreInfoCard({
     required this.showMoreInfo,
-    required this.moovi,
+    required this.movie,
   });
 
   @override
@@ -33,14 +33,14 @@ class MoreInfoCard extends StatelessWidget {
               blurRadius: 4.0),
         ],
       ),
-      child: showMoreInfo ? AnimatedInfo(moovi) : SizedBox(),
+      child: showMoreInfo ? AnimatedInfo(movie) : SizedBox(),
     );
   }
 }
 
 class AnimatedInfo extends StatefulWidget {
-  final Movie moovi;
-  AnimatedInfo(this.moovi);
+  final Movie movie;
+  AnimatedInfo(this.movie);
   @override
   _AnimatedInfoState createState() => _AnimatedInfoState();
 }
@@ -79,7 +79,7 @@ class _AnimatedInfoState extends State<AnimatedInfo>
 
   @override
   Widget build(BuildContext context) {
-    final moovi = widget.moovi;
+    final movie = widget.movie;
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
@@ -98,7 +98,7 @@ class _AnimatedInfoState extends State<AnimatedInfo>
                     Radius.circular(16),
                   ),
                   child: Image.asset(
-                    moovi.location,
+                    movie.location,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -106,13 +106,13 @@ class _AnimatedInfoState extends State<AnimatedInfo>
             ),
             SlideTransition(
               position: slideAnimation,
-              child: BuildTop(moovi),
+              child: BuildTop(movie),
             ),
           ],
         ),
         SlideTransition(
           position: actorsIntroSlide,
-          child: BuildBottom(moovi),
+          child: BuildBottom(movie),
         ),
       ],
     );

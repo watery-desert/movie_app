@@ -6,15 +6,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../constant/constant.dart';
 
 class BuildTop extends StatelessWidget {
-  final Movie moovi;
+  final Movie movie;
 
-  BuildTop(this.moovi);
+  BuildTop(this.movie);
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          moovi.title,
+          movie.title,
           style: TextStyle(
             fontSize: 24.0,
             fontWeight: FontWeight.bold,
@@ -26,7 +26,7 @@ class BuildTop extends StatelessWidget {
         Wrap(
           alignment: WrapAlignment.center,
           spacing: 8.0,
-          children: moovi.tags
+          children: movie.tags
               .map(
                 (tag) => Chip(
                   labelPadding: EdgeInsets.symmetric(horizontal: 4.0),
@@ -52,7 +52,7 @@ class BuildTop extends StatelessWidget {
         RatingBar.builder(
           ignoreGestures: true,
           itemSize: 18,
-          initialRating: moovi.ratings,
+          initialRating: movie.ratings,
           minRating: 1,
           direction: Axis.horizontal,
           allowHalfRating: true,
@@ -70,7 +70,7 @@ class BuildTop extends StatelessWidget {
         SizedBox(
           height: 8.0,
         ),
-        Text('Director: ${moovi.director}'),
+        Text('Director: ${movie.director}'),
       ],
     );
   }

@@ -40,14 +40,14 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late PageController _pageController;
   bool compactView = true;
-  List<Movie> moovisList = [];
+  List<Movie> moviesList = [];
   int currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
 
-    moovisList = rawData.reversed
+    moviesList = rawData.reversed
         .map(
           (data) => Movie.fromMap(
             data,
@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
-    final reversedMovieList = moovisList.reversed.toList();
+    final reversedMovieList = moviesList.reversed.toList();
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
@@ -73,12 +73,12 @@ class _MyHomePageState extends State<MyHomePage>
           children: <Widget>[
             if (compactView)
               Stack(
-                children: moovisList.map((moovi) {
+                children: moviesList.map((movie) {
                   return BackgroundImageSlide(
                     pageController: _pageController,
                     deviceWidth: deviceWidth,
-                    imageURL: moovi.location,
-                    backgroundIndex: moovi.index,
+                    imageURL: movie.location,
+                    backgroundIndex: movie.index,
                   );
                 }).toList(),
               ),
@@ -101,12 +101,12 @@ class _MyHomePageState extends State<MyHomePage>
             ),
             MoreInfoCard(
               showMoreInfo: !compactView,
-              moovi: moovisList.reversed.toList()[currentIndex],
+              movie: moviesList.reversed.toList()[currentIndex],
             ),
             MoviesCard(
               showCards: compactView,
               pageController: _pageController,
-              moovisList: reversedMovieList,
+              moviesList: reversedMovieList,
               onTapCard: () {
                 setState(() {
                   compactView = false;

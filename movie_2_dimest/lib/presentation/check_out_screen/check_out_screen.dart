@@ -5,7 +5,7 @@ class CheckOutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async => await false,
+      onWillPop: () async => false,
       child: Scaffold(
         backgroundColor: Colors.black,
         body: Center(

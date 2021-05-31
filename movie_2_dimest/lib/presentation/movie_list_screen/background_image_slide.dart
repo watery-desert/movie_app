@@ -19,8 +19,7 @@ class BackgroundImageSlide extends StatefulWidget {
   _BackgroundImageSlideState createState() => _BackgroundImageSlideState();
 }
 
-class _BackgroundImageSlideState extends State<BackgroundImageSlide>
-    with SingleTickerProviderStateMixin {
+class _BackgroundImageSlideState extends State<BackgroundImageSlide> with SingleTickerProviderStateMixin {
   double clipProgress = 1.0;
 
   Widget viewImage(String location) {
@@ -43,7 +42,7 @@ class _BackgroundImageSlideState extends State<BackgroundImageSlide>
     pageController.addListener(() {
       final offset = (pageController.position.pixels / 0.8) / deviceWidth;
       final currentPage = offset.toInt() + 1;
-      if (currentPage == backgroundIndex) {
+      if (currentPage == backgroundIndex ) {
         setState(() {
           clipProgress = 1 - removeIntegerPart(offset);
         });
@@ -52,10 +51,11 @@ class _BackgroundImageSlideState extends State<BackgroundImageSlide>
   }
 
   double removeIntegerPart(double number) {
-    final decimalLengh = 100000000;
-    /// This code is copid from here
+    final decimalLength = 100000000;
+
+    /// This code is copied from here
     /// https://stackoverflow.com/a/59738706/10993985
-    return (((number * decimalLengh).toInt() % decimalLengh) / decimalLengh);
+    return (((number * decimalLength).toInt() % decimalLength) / decimalLength);
   }
 
   @override

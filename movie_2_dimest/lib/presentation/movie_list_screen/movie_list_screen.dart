@@ -36,8 +36,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   late PageController _pageController;
   bool compactView = true;
   List<Movie> moviesList = [];
@@ -93,9 +92,7 @@ class _MyHomePageState extends State<MyHomePage>
             ),
             TopImageView(
               showCompactImageView: !compactView,
-              leftImageURL: currentIndex == 0
-                  ? null
-                  : reversedMovieList[currentIndex - 1].location,
+              leftImageURL: currentIndex == 0 ? null : reversedMovieList[currentIndex - 1].location,
               middleImageURL: reversedMovieList[currentIndex].location,
               rightImageURL: reversedMovieList[currentIndex + 1].location,
             ),
@@ -114,7 +111,9 @@ class _MyHomePageState extends State<MyHomePage>
               },
               onPageChangeCallback: (index) {
                 setState(() {
-                  currentIndex = index;
+                  if (index < 3){
+                    currentIndex = index;
+                  }
                 });
               },
             ),

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'my_app.dart';
+import 'presentation/movie_list_screen/movie_list_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MovieListScreen());
 }

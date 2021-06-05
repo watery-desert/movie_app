@@ -1,16 +1,13 @@
 # car_rental_ronas_it
 
-A new Flutter project.
+Taxi rental app using flutter. Add Google maps api key.
 
-## Getting Started
+## App info
 
-This project is a starting point for a Flutter application.
+I have not implemented anything in this app. This is a bare bones project I haven't implemented BLoC (state management). You can watch [this youtube video by fireship.io](https://www.youtube.com/watch?v=MYHVyl-juUk) he explained how to add the backend. The app will get location data of other taxi and show it to user then user can pick. Everything can be done realtime.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+

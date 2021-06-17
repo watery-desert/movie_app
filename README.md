@@ -7,3 +7,8 @@ Movie 2.0 by Dimest. Using Bloc state managment.
 ## **Design Credits**
 
 [Movie 2.0 by Dimest](https://dribbble.com/shots/8257559-Movie-2-0)
+
+## Social Media Link
+[Instagram](https://www.instagram.com/watery_desert)
+
+[Twitter](https://www.twitter.com/watery_desert)

@@ -11,7 +11,6 @@ import 'movie_info_view/top_image_view.dart';
 import 'movie_info_view/more_info_card.dart';
 import '../widget/app_bar/transparent_appbar.dart';
 import '../widget/button/movie_button.dart';
-import '../seat_booking_screen/seat_booking_screen.dart';
 import '../../bloc/movie_bloc.dart';
 
 import '../error_screen/error_screen.dart';
@@ -35,7 +34,10 @@ class _MovieListScreenState extends State<MovieListScreen>
   void initState() {
     super.initState();
 
-    _pageController = PageController(initialPage: 0, viewportFraction: 0.8);
+    _pageController = PageController(
+      initialPage: 0,
+      viewportFraction: 0.8,
+    );
   }
 
   @override
@@ -111,31 +113,12 @@ class _MovieListScreenState extends State<MovieListScreen>
                     bottom: 32.0,
                     left: 0.0,
                     right: 0.0,
-                    child: OpenContainer(
-                      transitionDuration: Duration(milliseconds: 800),
-                      closedColor: Colors.transparent,
-                      closedShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                      closedElevation: 0.0,
-                      tappable: true,
-                      closedBuilder: (context, action) {
-                        return MovieButton(
-                          title: 'BUY TICKET',
-                          color: Colors.black87,
-                          padding: compactView
-                              ? const EdgeInsets.symmetric(horizontal: 62.0)
-                              : EdgeInsets.symmetric(horizontal: 16),
-                        );
-                      },
-                      openShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0),
-                      ),
-                      openColor: Colors.transparent,
-                      openElevation: 0.0,
-                      openBuilder: (context, action) => SeatBookingScreen(
-                        movies[currentIndex],
-                      ),
+                    child: MovieButton(
+                      title: 'BUY TICKET',
+                      color: Colors.black87,
+                      padding: compactView
+                          ? const EdgeInsets.symmetric(horizontal: 62.0)
+                          : EdgeInsets.symmetric(horizontal: 16),
                     ),
                   ),
                 ],

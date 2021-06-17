@@ -2,7 +2,7 @@
 
 Movie 2.0 by Dimest. Using Bloc state managment.
 
-<img src="assets/screen_recording.gif"  width="300"/>
+<img src="assets/screen_recording.gif"  width="500"/>
 
 ## **Design Credits**
 

@@ -1,6 +1,6 @@
 # movie_2_dimest
 
-<img src="https://github.com/watery-desert/assets/blob/main/flutter/ui_challenge/movie_2_dimest/screen_recording.gif?raw=true"  width="300"/>
+<img src="https://raw.githubusercontent.com/watery-desert/assets/main/flutter/ui_challenge/movie_2_dimest/screen_recording.gif"  width="300"/>
 
 ## **Design Credit**
 

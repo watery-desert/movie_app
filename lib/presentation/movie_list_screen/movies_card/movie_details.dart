@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../models/movie.dart';
-import '../../../constant/constant.dart';
+
 
 class MovieDetails extends StatelessWidget {
   final Movie movie;
-  final VoidCallback onTap;
-  MovieDetails(this.movie, this.onTap,);
+  MovieDetails(
+    this.movie,
+  );
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,23 +28,20 @@ class MovieDetails extends StatelessWidget {
       ),
       child: Column(
         children: [
-          GestureDetector(
-            onTap: onTap,
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(32.0, 32.0, 32.0, 8.0),
-              width: double.infinity,
-              height: 340,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16.0),
+          Container(
+            padding: const EdgeInsets.fromLTRB(32.0, 32.0, 32.0, 8.0),
+            width: double.infinity,
+            height: 340,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(
+                Radius.circular(16),
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(16),
-                ),
-                child: Image.asset(
-                  movie.location,
-                  fit: BoxFit.cover,
-                ),
+              child: Image.asset(
+                movie.location,
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -55,51 +53,18 @@ class MovieDetails extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 8.0,
+            height: 16.0,
           ),
-          Wrap(
-            alignment: WrapAlignment.center,
-            spacing: 8.0,
-            children: movie.tags
-                .map(
-                  (tag) => Chip(
-                    labelPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    shape: StadiumBorder(
-                      side: BorderSide(width: 0.5, color: chipColor),
-                    ),
-                    backgroundColor: Colors.transparent,
-                    label: Text(
-                      tag,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: chipColor,
-                      ),
-                    ),
-                  ),
-                )
-                .toList(),
-          ),
-          SizedBox(
-            height: 8.0,
-          ),
-          RatingBar.builder(
-            ignoreGestures: true,
-            itemSize: 18,
-            initialRating: movie.ratings,
-            minRating: 1,
-            direction: Axis.horizontal,
-            allowHalfRating: true,
-            itemCount: 5,
-            itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-            itemBuilder: (context, _) => Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Icon(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              5,
+              (index) => Icon(
                 FontAwesomeIcons.solidStar,
+                size: 18,
                 color: Colors.orange,
               ),
             ),
-            onRatingUpdate: (_) {},
           ),
         ],
       ),

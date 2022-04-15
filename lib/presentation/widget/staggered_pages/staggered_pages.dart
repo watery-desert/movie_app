@@ -5,13 +5,13 @@ Color chipColor = Colors.black.withOpacity(0.5);
 typedef Widget ChildBuilder(int index, BuildContext context);
 typedef void OnPageChangeCallback (int index);
 
-class StaggerPages extends StatefulWidget {
+class StaggeredPages extends StatefulWidget {
   final PageController pageController;
   final ChildBuilder child;
   final int pageCount;
   final OnPageChangeCallback? onPageChangeCallback;
 
-  StaggerPages({
+  StaggeredPages({
     required this.pageController,
     required this.child,
     required this.pageCount,
@@ -22,7 +22,7 @@ class StaggerPages extends StatefulWidget {
   _CardsState createState() => _CardsState();
 }
 
-class _CardsState extends State<StaggerPages> {
+class _CardsState extends State<StaggeredPages> {
   double currentPageValue = 0.0;
 
   @override

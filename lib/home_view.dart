@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'movie.dart';
 import 'movie_details.dart';
 
-import 'background_image_slide.dart';
+import 'image_slide.dart';
 import 'movie_button.dart';
 import 'staggered_pages.dart';
 
@@ -52,7 +52,7 @@ class _HomeViewState extends State<HomeView> {
           children: <Widget>[
             Stack(
               children: reversedMovieList.map((movie) {
-                return BackgroundImageSlide(
+                return ImageSlider(
                   pageController: _pageController,
                   deviceWidth: deviceWidth,
                   imageURL: movie.image,

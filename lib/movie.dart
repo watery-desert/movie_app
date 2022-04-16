@@ -29,7 +29,7 @@ List<Map<String, dynamic>> rawData = [
   },
   {
     'title': 'Lion King',
-    'image': 'assets/Lion_King.jpg',
+    'image': 'assets/lion_king.jpg',
     'index': 4,
   },
 ];

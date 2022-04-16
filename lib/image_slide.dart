@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'image_clipper.dart';
 
-class BackgroundImageSlide extends StatefulWidget {
+class ImageSlider extends StatefulWidget {
   final int backgroundIndex;
   final String imageURL;
   final PageController pageController;
   final double deviceWidth;
 
-  const BackgroundImageSlide({
+  const ImageSlider({
     Key? key,
     required this.backgroundIndex,
     required this.pageController,
@@ -17,10 +17,10 @@ class BackgroundImageSlide extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _BackgroundImageSlideState createState() => _BackgroundImageSlideState();
+  _ImageSliderState createState() => _ImageSliderState();
 }
 
-class _BackgroundImageSlideState extends State<BackgroundImageSlide>
+class _ImageSliderState extends State<ImageSlider>
     with SingleTickerProviderStateMixin {
   double clipProgress = 1.0;
 

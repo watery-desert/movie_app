@@ -1,3 +1,18 @@
+// import 'actor.dart';
+
+class Movie {
+  final String title;
+  final String location;
+  final int index;
+
+  Movie({
+    required this.title,
+    required this.index,
+    required this.location,
+  });
+}
+
+
 List<Map<String, dynamic>> rawData = [
   {
     'title': 'Good Boys',
@@ -12,6 +27,7 @@ List<Map<String, dynamic>> rawData = [
   {
     'title': 'The Irishman',
     'image': 'assets/images/the_irishman.jpg',
+    'index': 3,
   },
   {
     'title': 'Lion King',

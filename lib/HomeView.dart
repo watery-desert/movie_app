@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 
-import 'package:movie_2_dimest/data.dart';
+import 'movie.dart';
+import 'movie_details.dart';
 
-import '../../models/movie.dart';
-import 'movies_card/movies_card.dart';
 import 'background_image_slide.dart';
-import '../widget/button/movie_button.dart';
+import 'movie_button.dart';
+import 'staggered_pages.dart';
 
-class MovieListScreen extends StatefulWidget {
-  MovieListScreen();
+class HomeView extends StatefulWidget {
+  HomeView();
 
   @override
-  _MovieListScreenState createState() => _MovieListScreenState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _MovieListScreenState extends State<MovieListScreen>
+class _HomeViewState extends State<HomeView>
     with SingleTickerProviderStateMixin {
   late PageController _pageController;
   List<Movie> movies = [];
@@ -28,10 +28,10 @@ class _MovieListScreenState extends State<MovieListScreen>
     movies = rawData
         .map(
           (data) => Movie(
-              title: data["title"],
-              index: data["index"],
-              location: data["image"],
-             ),
+            title: data["title"],
+            index: data["index"],
+            location: data["image"],
+          ),
         )
         .toList();
     _pageController = PageController(
@@ -71,14 +71,17 @@ class _MovieListScreenState extends State<MovieListScreen>
                     stops: [0.3, 0.8]),
               ),
             ),
-            MoviesCard(
-              pageController: _pageController,
-              movieList: movies,
+            StaggeredPages(
               onPageChangeCallback: (index) {
                 setState(() {
                   currentIndex = index;
                 });
               },
+              pageController: _pageController,
+              child: (index, _) => MovieDetails(
+                movies[index],
+              ),
+              pageCount: movies.length,
             ),
             Positioned(
               bottom: 32.0,
@@ -90,11 +93,5 @@ class _MovieListScreenState extends State<MovieListScreen>
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RippleClipper extends CustomClipper<Path> {
-  RippleClipper({required this.progress});
+class ImageClipper extends CustomClipper<Path> {
+  ImageClipper({required this.progress});
 
   final double progress;
 

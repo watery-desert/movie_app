@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widget/image_clipper/image_clipper.dart';
+import 'image_clipper.dart';
 
 class BackgroundImageSlide extends StatefulWidget {
   final int backgroundIndex;
@@ -24,12 +24,10 @@ class _BackgroundImageSlideState extends State<BackgroundImageSlide>
   double clipProgress = 1.0;
 
   Widget viewImage(String location) {
-    return Container(
+    return Image.asset(
+      location,
       height: double.infinity,
-      child: Image.asset(
-        location,
-        fit: BoxFit.cover,
-      ),
+      fit: BoxFit.cover,
     );
   }
 
@@ -53,6 +51,7 @@ class _BackgroundImageSlideState extends State<BackgroundImageSlide>
 
   double removeIntegerPart(double number) {
     final decimalLengh = 100000000;
+
     /// This code is copid from here
     /// https://stackoverflow.com/a/59738706/10993985
     return (((number * decimalLengh).toInt() % decimalLengh) / decimalLengh);
@@ -61,7 +60,7 @@ class _BackgroundImageSlideState extends State<BackgroundImageSlide>
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: RippleClipper(progress: clipProgress),
+      clipper: ImageClipper(progress: clipProgress),
       child: viewImage(widget.imageURL),
     );
   }

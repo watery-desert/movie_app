@@ -1,14 +1,12 @@
-// import 'actor.dart';
-
 class Movie {
   final String title;
-  final String location;
+  final String image;
   final int index;
 
   Movie({
     required this.title,
     required this.index,
-    required this.location,
+    required this.image,
   });
 }
 
@@ -16,22 +14,22 @@ class Movie {
 List<Map<String, dynamic>> rawData = [
   {
     'title': 'Good Boys',
-    'image': 'assets/images/good_boys.jpg',
+    'image': 'assets/good_boys.jpg',
     'index': 1,
   },
   {
     'title': 'Joker',
-    'image': 'assets/images/joker.png',
+    'image': 'assets/joker.png',
     'index': 2,
   },
   {
     'title': 'The Irishman',
-    'image': 'assets/images/the_irishman.jpg',
+    'image': 'assets/the_irishman.jpg',
     'index': 3,
   },
   {
     'title': 'Lion King',
-    'image': 'assets/images/Lion_King.jpg',
+    'image': 'assets/Lion_King.jpg',
     'index': 4,
   },
 ];

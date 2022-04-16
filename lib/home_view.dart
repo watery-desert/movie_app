@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter/services.dart';
 
 import 'movie.dart';
@@ -10,14 +9,13 @@ import 'movie_button.dart';
 import 'staggered_pages.dart';
 
 class HomeView extends StatefulWidget {
-  HomeView();
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView>
-    with SingleTickerProviderStateMixin {
+class _HomeViewState extends State<HomeView> {
   late PageController _pageController;
   List<Movie> movies = [];
   int currentIndex = 0;
@@ -30,12 +28,12 @@ class _HomeViewState extends State<HomeView>
           (data) => Movie(
             title: data["title"],
             index: data["index"],
-            location: data["image"],
+            image: data["image"],
           ),
         )
         .toList();
     _pageController = PageController(
-      initialPage: 0,
+      initialPage: currentIndex,
       viewportFraction: 0.8,
     );
   }
@@ -45,7 +43,7 @@ class _HomeViewState extends State<HomeView>
     final deviceWidth = MediaQuery.of(context).size.width;
     final reversedMovieList = movies.reversed.toList();
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
+      value: const SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
       ),
       child: Scaffold(
@@ -57,13 +55,13 @@ class _HomeViewState extends State<HomeView>
                 return BackgroundImageSlide(
                   pageController: _pageController,
                   deviceWidth: deviceWidth,
-                  imageURL: movie.location,
+                  imageURL: movie.image,
                   backgroundIndex: movie.index,
                 );
               }).toList(),
             ),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     colors: [Colors.transparent, Colors.white],
                     begin: Alignment.topCenter,
@@ -83,7 +81,7 @@ class _HomeViewState extends State<HomeView>
               ),
               pageCount: movies.length,
             ),
-            Positioned(
+            const Positioned(
               bottom: 32.0,
               left: 0.0,
               right: 0.0,

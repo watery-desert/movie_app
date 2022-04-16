@@ -15,7 +15,7 @@ class MovieButton extends StatelessWidget {
         ),
       ),
       alignment: Alignment.center,
-      child: Text(
+      child: const Text(
         "BUY TICKET ",
         style: TextStyle(
           fontSize: 16,

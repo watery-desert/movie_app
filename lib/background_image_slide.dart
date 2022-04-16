@@ -8,12 +8,13 @@ class BackgroundImageSlide extends StatefulWidget {
   final PageController pageController;
   final double deviceWidth;
 
-  BackgroundImageSlide({
+  const BackgroundImageSlide({
+    Key? key,
     required this.backgroundIndex,
     required this.pageController,
     required this.deviceWidth,
     required this.imageURL,
-  });
+  }) : super(key: key);
 
   @override
   _BackgroundImageSlideState createState() => _BackgroundImageSlideState();
@@ -50,7 +51,7 @@ class _BackgroundImageSlideState extends State<BackgroundImageSlide>
   }
 
   double removeIntegerPart(double number) {
-    final decimalLengh = 100000000;
+    const decimalLengh = 100000000;
 
     /// This code is copid from here
     /// https://stackoverflow.com/a/59738706/10993985

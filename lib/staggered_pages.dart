@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-Color chipColor = Colors.black.withOpacity(0.5);
 
-typedef Widget ChildBuilder(int index, BuildContext context);
-typedef void OnPageChangeCallback (int index);
+
+typedef ChildBuilder = Widget Function(int index, BuildContext context);
+typedef OnPageChangeCallback = void Function(int index);
 
 class StaggeredPages extends StatefulWidget {
   final PageController pageController;
@@ -11,12 +11,12 @@ class StaggeredPages extends StatefulWidget {
   final int pageCount;
   final OnPageChangeCallback? onPageChangeCallback;
 
-  StaggeredPages({
+  const StaggeredPages({Key? key,
     required this.pageController,
     required this.child,
     required this.pageCount,
     this.onPageChangeCallback,
-  });
+  }) : super(key: key);
 
   @override
   _CardsState createState() => _CardsState();
@@ -43,7 +43,7 @@ class _CardsState extends State<StaggeredPages> {
    final onPageChangeCallback =  widget.onPageChangeCallback;
     return PageView.builder(
       onPageChanged: onPageChangeCallback,
-      physics: ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       controller: widget.pageController,
       itemBuilder: (context, index) {
         if (index == currentPageValue.floor() + 1 ||

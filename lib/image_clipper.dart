@@ -10,7 +10,11 @@ class ImageClipper extends CustomClipper<Path> {
     Path path = Path();
     path.addRect(
       Rect.fromLTRB(
-          size.width - (size.width * progress), 0, size.width, size.height),
+        size.width - (size.width * progress),
+        0,
+        size.width,
+        size.height,
+      ),
     );
     return path;
   }

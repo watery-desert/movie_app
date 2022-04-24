@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'movie.dart';
 import 'movie_details.dart';
 
-import 'image_slide.dart';
+import 'image_slider.dart';
 import 'movie_button.dart';
-import 'staggered_pages.dart';
+import 'animated_pages.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -19,6 +19,7 @@ class _HomeViewState extends State<HomeView> {
   late PageController _pageController;
   List<Movie> movies = [];
   int currentIndex = 0;
+  double pageValue = 0.0;
 
   @override
   void initState() {
@@ -35,7 +36,11 @@ class _HomeViewState extends State<HomeView> {
     _pageController = PageController(
       initialPage: currentIndex,
       viewportFraction: 0.8,
-    );
+    )..addListener(() {
+        setState(() {
+          pageValue = _pageController.page!;
+        });
+      });
   }
 
   @override
@@ -53,33 +58,36 @@ class _HomeViewState extends State<HomeView> {
             Stack(
               children: reversedMovieList.map((movie) {
                 return ImageSlider(
-                  pageController: _pageController,
-                  deviceWidth: deviceWidth,
-                  imageURL: movie.image,
-                  backgroundIndex: movie.index,
+                  pageValue: pageValue,
+                  image: movie.image,
+                  index: movie.index - 1,
                 );
               }).toList(),
             ),
             Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                    colors: [Colors.transparent, Colors.white],
+                    colors: [
+                      Colors.transparent,
+                      Colors.white,
+                    ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     stops: [0.3, 0.8]),
               ),
             ),
-            StaggeredPages(
+            AnimatedPages(
+              pageValue: pageValue,
+              pageController: _pageController,
+              pageCount: movies.length,
               onPageChangeCallback: (index) {
                 setState(() {
                   currentIndex = index;
                 });
               },
-              pageController: _pageController,
               child: (index, _) => MovieDetails(
                 movies[index],
               ),
-              pageCount: movies.length,
             ),
             const Positioned(
               bottom: 32.0,

@@ -28,11 +28,11 @@ class ImageSlider extends StatelessWidget {
 
   double getProgress() {
     if (index == pageValue.floor()) {
-      return 1.0 - (pageValue - index);
-    } else if (index > pageValue.floor()) {
-      return 1.0;
-    } else {
+      return  1.0 - (pageValue - index);
+    } else if (index < pageValue.floor()) {
       return 0.0;
+    } else {
+      return 1.0;
     }
   }
 }
